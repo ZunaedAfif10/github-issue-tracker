@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github-Issue-Tracker</title>
+
+    <!-- tailwind+daisy -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F8FAFC] h-screen">
+    <nav>
+        <div class="navbar bg-base-100 shadow-sm px-10">
+            <div class="flex flex-1 items-center gap-2">
+                <img src="assets/github-logo.png" alt="" width="36px" height="36px">
+                <h1 class="font-semibold text-xl">GitHub Issues Tracker</h1>
+            </div>
+            <div class="flex gap-4">
+                <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-64" />
+                <button class="btn btn-primary">+ New Issue</button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="Tab-container" class="mt-16 w-[80%] mx-auto bg-white p-6 rounded-lg shadow-sm">
+        <div class="space-x-1">
+            <button id="All-btn" class="btn btn-primary px-11 font-normal">All</button>
+            <button id="Open-btn" class="btn px-11 font-normal">Open</button>
+            <button id="Closed-btn" class="btn px-11 font-normal">Closed</button>
+        </div>
+    </section>
+
+    <section class="mt-4  w-[80%] mx-auto bg-white p-6 rounded-t-lg shadow-sm">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img class="bg-gray-200 rounded-full p-2" src="assets/Aperture.png" alt="">
+                <div>
+                    <h1 id="Total" class="font-semibold text-xl">50 Issues</h1>
+                    <p class="text-gray-500">Track and manage your project issues</p>
+                </div>
+            </div>
+            <div>
+                <img class="inline-block" src="assets/Ellipse 2.png" alt="">
+                <span class="mr-2">Open</span>
+                <img class="inline-block" src="assets/Ellipse 2 (1).png" alt="">
+                <span>Closed</span>
+            </div>
+        </div>
+    </section>
+    <hr class="w-[80%] mx-auto border-t-[1px] border-gray-200">
+
+    <section id="issue-container" class="grid grid-cols-4 gap-4 w-[80%] mx-auto bg-[#FBFBFB] p-6 shadow-sm">
+        <div class=" bg-white shadow-sm border-t-4 border-red-400 rounded-md">
+            <div class="flex justify-between px-5 pt-5">
+                <img src="assets/Open-Status.png" alt="" class="inline-block w-8">
+                <p class="bg-red-100 text-red-800 inline-block px-7 py-1 rounded-2xl">High</p>
+            </div>
+            <div class="mt-4 space-y-2 px-5">
+                <h1 class="font-semibold">Fix navigation menu on mobile devices</h1>
+                <p class="text-gray-500">The navigation menu doesn't collapse properly on mobile devices...</p>
+            </div>
+            <div class="mt-4 flex gap-2 px-5 pb-4">
+                <button class="btn font-normal bg-red-100 border-red-200 border text-red-800 inline-block px-3 py-1 rounded-3xl"><img src="assets/BugDroid.png" class="inline-block" alt=""> BUG</button>
+                <button class="btn font-normal bg-yellow-100 border-yellow-300 border text-yellow-700 inline-block px-3 py-1 rounded-3xl"><img src="assets/Lifebuoy.png" class="inline-block" alt=""> HELP WANTED</button>
+            </div>
+            <hr class="border-t-2 border-gray-200">
+            <div class="py-4 px-5">
+                <p class="text-gray-500">#1 by john_doe</p>
+                <p class="text-gray-500">1/15/2024</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script/home.js"></script>
+</body>
+
+</html>
