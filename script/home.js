@@ -109,9 +109,9 @@ const displayIssue = (datas) => {
         const date = new Date(data.createdAt);
         const issueDiv = document.createElement('div');
         issueDiv.innerHTML = ` 
-        <div class=" bg-white shadow-sm border-t-4 ${data.status === 'open' ? 'border-blue-500' : 'border-red-400'} rounded-md h-full">
+        <div class=" bg-white shadow-sm border-t-4 ${data.status === 'closed' ? 'border-blue-500' : 'border-red-400'} rounded-md h-full">
             <div class="flex justify-between px-5 pt-5">
-                <img src="assets/Open-Status.png" alt="" class="inline-block w-8">
+                <img src="${data.status === 'open' ? 'assets/Open-Status.png' : 'assets/Closed- Status .png'}" alt="" class="inline-block w-8">
                 <p class="bg-red-100 text-red-800 inline-block px-7 py-1 rounded-2xl">${data.priority}</p>
             </div>
             <div class="mt-4 space-y-2 px-5">
@@ -142,9 +142,9 @@ const displayOpen = (datas) => {
             const date = new Date(data.createdAt);
             const issueDiv = document.createElement('div');
             issueDiv.innerHTML = ` 
-        <div class=" bg-white shadow-sm border-t-4 ${data.status === 'open' ? 'border-blue-500' : 'border-red-400'} rounded-md h-full">
+        <div class=" bg-white shadow-sm border-t-4 ${data.status === 'closed' ? 'border-blue-500' : 'border-red-400'} rounded-md h-full">
             <div class="flex justify-between px-5 pt-5">
-                <img src="assets/Open-Status.png" alt="" class="inline-block w-8">
+                <img src="${data.status === 'open' ? 'assets/Open-Status.png' : 'assets/Closed- Status .png'}" alt="" class="inline-block w-8">
                 <p class="bg-red-100 text-red-800 inline-block px-7 py-1 rounded-2xl">${data.priority}</p>
             </div>
             <div class="mt-4 space-y-2 px-5">
@@ -175,9 +175,9 @@ const displayClose = (datas) => {
             const date = new Date(data.createdAt);
             const issueDiv = document.createElement('div');
             issueDiv.innerHTML = ` 
-        <div class=" bg-white shadow-sm border-t-4 ${data.status === 'open' ? 'border-blue-500' : 'border-red-400'} rounded-md h-full">
+        <div class=" bg-white shadow-sm border-t-4 ${data.status === 'closed' ? 'border-blue-500' : 'border-red-400'} rounded-md h-full">
             <div class="flex justify-between px-5 pt-5">
-                <img src="assets/Open-Status.png" alt="" class="inline-block w-8">
+                <img src="${data.status === 'open' ? 'assets/Open-Status.png' : 'assets/Closed- Status .png'}" alt="" class="inline-block w-8">
                 <p class="bg-red-100 text-red-800 inline-block px-7 py-1 rounded-2xl">${data.priority}</p>
             </div>
             <div class="mt-4 space-y-2 px-5">
