@@ -41,6 +41,19 @@ searchInput.addEventListener("keyup", function(event) {
   }
 });
 
+const loadingSpinner=(stat)=>{
+    if(stat === true)
+    {
+        document.getElementById('spinner').classList.remove('hidden');
+        document.getElementById('issue-container').classList.add('hidden');
+    }
+    else if(stat === false)
+    {
+        document.getElementById('spinner').classList.add('hidden');
+        document.getElementById('issue-container').classList.remove('hidden');
+    }
+}
+
 const searchIssue=()=>{
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchInput.value}`;
     console.log(url);
@@ -57,6 +70,7 @@ const countIssue=(data)=>total.innerText = data.total + " Issues";
 
 let f=0;
 const loadAll = () => {
+    loadingSpinner(true);
     fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
         .then(res => res.json())
         .then(show => {
@@ -71,6 +85,7 @@ const loadAll = () => {
         );
 }
 const loadOpen = () => {
+    loadingSpinner(true);
     fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
         .then(res => res.json())
         .then(show => {
@@ -79,6 +94,7 @@ const loadOpen = () => {
         );
 }
 const loadClose = () => {
+    loadingSpinner(true);
     fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
         .then(res => res.json())
         .then(show => {
@@ -182,7 +198,7 @@ const displayIssue = (datas) => {
         `
         issueContainer.appendChild(issueDiv);
     }
-
+    loadingSpinner(false);
 }
 
 const displayOpen = (datas) => {
@@ -216,7 +232,7 @@ const displayOpen = (datas) => {
             issueContainer.appendChild(issueDiv);
         }
     }
-
+    loadingSpinner(false);
 }
 const displayClose = (datas) => {
     const issueContainer = document.getElementById('issue-container');
@@ -249,5 +265,5 @@ const displayClose = (datas) => {
             issueContainer.appendChild(issueDiv);
         }
     }
-
+    loadingSpinner(false);
 }
