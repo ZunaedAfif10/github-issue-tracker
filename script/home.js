@@ -121,7 +121,7 @@ const loadDetails = (id)=>{
 }
 
  const displayDetail=(data)=>{
-    const date = new Date(data.createdAt);
+    const date = new Date(data.updatedAt);
     const detail = document.getElementById('details');
     detail.innerHTML = `<h1 class="font-semibold text-xl">${data.title}</h1>
     <p class="mt-2 text-xs text-gray-500"><span class="bg-green-400 text-black rounded-3xl inline-block px-3 py-1">${data.status}</span> · ${data.status === 'open' ? 'Opened by ' + data.assignee : 'Closed'} · ${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}</p>
