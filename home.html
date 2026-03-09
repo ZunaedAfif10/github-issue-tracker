@@ -31,29 +31,29 @@
 
 <body class="bg-[#F8FAFC] h-screen">
     <nav>
-        <div class="navbar bg-base-100 shadow-sm px-10">
+        <div class="navbar bg-base-100 shadow-sm px-3 sm:px-10">
             <div class="flex flex-1 items-center gap-2">
                 <img src="assets/github-logo.png" alt="" width="36px" height="36px">
                 <h1 class="font-semibold text-xl">GitHub Issues Tracker</h1>
             </div>
             <div class="flex gap-4">
-                <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-64" />
-                <button class="btn btn-primary">+ New Issue</button>
+                <input id="Search" type="text" placeholder="Search" class="input input-bordered w-24 md:w-64" />
+                <button onclick="searchIssue()" class="btn btn-primary hidden sm:block">+ New Issue</button>
             </div>
         </div>
     </nav>
 
-    <section id="Tab-container" class="mt-16 w-[80%] mx-auto bg-white p-6 rounded-lg shadow-sm">
-        <div class="space-x-1">
+    <section id="Tab-container" class="sm:mt-16 mt-3 w-[90%] sm:w-[80%] mx-auto bg-white p-6 rounded-lg shadow-sm">
+        <div class="space-x-1 flex-col flex sm:flex-row gap-2">
             <button id="All-btn" class="btn btn-primary px-11 font-normal">All</button>
             <button id="Open-btn" class="btn px-11 font-normal">Open</button>
             <button id="Closed-btn" class="btn px-11 font-normal">Closed</button>
         </div>
     </section>
 
-    <section class="mt-4  w-[80%] mx-auto bg-white p-6 rounded-t-lg shadow-sm">
-        <div class="flex justify-between items-center">
-            <div class="flex items-center gap-3">
+    <section class="mt-4 w-[90%] sm:w-[80%] mx-auto bg-white p-6 rounded-t-lg shadow-sm">
+        <div class="sm:flex justify-between items-center">
+            <div class="sm:flex items-center gap-3">
                 <img class="bg-gray-200 rounded-full p-2" src="assets/Aperture.png" alt="">
                 <div>
                     <h1 id="Total" class="font-semibold text-xl">50 Issues</h1>
@@ -68,10 +68,10 @@
             </div>
         </div>
     </section>
-    <hr class="w-[80%] mx-auto border-t-[1px] border-gray-200">
+    <hr class="w-[90%] sm:w-[80%] mx-auto border-t-[1px] border-gray-200">
 
-    <section id="issue-container" class="grid grid-cols-4 gap-4 w-[80%] mx-auto bg-[#FBFBFB] p-6 shadow-sm">
-        <div class=" bg-white shadow-sm border-t-4 border-red-400 rounded-md">
+    <section id="issue-container" class="grid grid-cols-1 sm:grid-cols-4 gap-4 w-[90%] sm:w-[80%] mx-auto bg-[#FBFBFB] p-6 shadow-sm">
+        <!-- <div class=" bg-white shadow-sm border-t-4 border-red-400 rounded-md">
             <div class="flex justify-between px-5 pt-5">
                 <img src="assets/Open-Status.png" alt="" class="inline-block w-8">
                 <p class="bg-red-100 text-red-800 inline-block px-7 py-1 rounded-2xl">High</p>
@@ -81,16 +81,35 @@
                 <p class="text-gray-500">The navigation menu doesn't collapse properly on mobile devices...</p>
             </div>
             <div class="mt-4 flex gap-2 px-5 pb-4">
-                <button class="btn font-normal bg-red-100 border-red-200 border text-red-800 inline-block px-3 py-1 rounded-3xl"><img src="assets/BugDroid.png" class="inline-block" alt=""> BUG</button>
-                <button class="btn font-normal bg-yellow-100 border-yellow-300 border text-yellow-700 inline-block px-3 py-1 rounded-3xl"><img src="assets/Lifebuoy.png" class="inline-block" alt=""> HELP WANTED</button>
+                <button
+                    class="btn font-normal bg-red-100 border-red-200 border text-red-800 inline-block px-3 py-1 rounded-3xl"><img
+                        src="assets/BugDroid.png" class="inline-block" alt=""> BUG</button>
+                <button
+                    class="btn font-normal bg-yellow-100 border-yellow-300 border text-yellow-700 inline-block px-3 py-1 rounded-3xl"><img
+                        src="assets/Lifebuoy.png" class="inline-block" alt=""> HELP WANTED</button>
             </div>
             <hr class="border-t-2 border-gray-200">
             <div class="py-4 px-5">
                 <p class="text-gray-500">#1 by john_doe</p>
                 <p class="text-gray-500">1/15/2024</p>
             </div>
-        </div>
+        </div> -->
     </section>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <div id="details">
+            </div>
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn btn-primary">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
 
     <script src="script/home.js"></script>
 </body>

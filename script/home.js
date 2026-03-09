@@ -33,8 +33,28 @@ tabContainer.addEventListener('click', function (event) {
     }
 })
 
+const searchInput = document.getElementById('Search');
+searchInput.addEventListener("keyup", function(event) {
+  if (event.key === "Enter") {
+    // console.log("Enter");
+    searchIssue();
+  }
+});
+
+const searchIssue=()=>{
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchInput.value}`;
+    console.log(url);
+    fetch(url)
+    .then(res=>res.json())
+    .then(details =>{
+        displayIssue(details.data);
+        countIssue(details);
+    });
+}
 
 const total = document.getElementById('Total');
+const countIssue=(data)=>total.innerText = data.total + " Issues";
+
 let f=0;
 const loadAll = () => {
     fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
@@ -75,6 +95,38 @@ const createLabel=(arr)=>{
     return label.join(' ');
 }
 
+
+const loadDetails = (id)=>{
+    const url= `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+    // console.log(url);
+    fetch(url)
+    .then(res=>res.json())
+    .then(details => displayDetail(details.data));
+}
+
+ const displayDetail=(data)=>{
+    const date = new Date(data.createdAt);
+    const detail = document.getElementById('details');
+    detail.innerHTML = `<h1 class="font-semibold text-xl">${data.title}</h1>
+    <p class="mt-2 text-xs text-gray-500"><span class="bg-green-400 text-black rounded-3xl inline-block px-3 py-1">${data.status}</span> · ${data.status === 'open' ? 'Opened by ' + data.assignee : 'Closed'} · ${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}</p>
+    <div class="my-4">
+        ${createLabel(data.labels)}
+    </div>
+    <p class="text-gray-500">${data.description}</p>
+    <div class="flex justify-between mt-4 bg-[#F8FAFC] rounded-lg p-3">
+        <div>
+            <h3 class="text-gray-500">Assignee:</h3>
+            <p>${data.assignee === "" ? 'Not assigned yet' : data.assignee}</p>
+        </div>
+        <div class="pr-20">
+            <h2 class="text-gray-500">Priority:</h2>
+            <p class="font-normal text-xs bg-red-200 border-red-300 border text-black inline-block px-2 py-1 rounded-3xl">${data.priority}</p>
+        </div>
+    </div>
+    `
+    document.getElementById('my_modal_5').showModal();
+ }
+
 let open = 0;
 let close = 0;
 const countData = (count) => {
@@ -109,7 +161,7 @@ const displayIssue = (datas) => {
         const date = new Date(data.createdAt);
         const issueDiv = document.createElement('div');
         issueDiv.innerHTML = ` 
-        <div class=" bg-white shadow-sm border-t-4 ${data.status === 'closed' ? 'border-blue-500' : 'border-red-400'} rounded-md h-full">
+        <div onclick="loadDetails(${data.id})" class=" bg-white shadow-sm border-t-4 ${data.status === 'closed' ? 'border-blue-500' : 'border-red-400'} rounded-md h-full">
             <div class="flex justify-between px-5 pt-5">
                 <img src="${data.status === 'open' ? 'assets/Open-Status.png' : 'assets/Closed- Status .png'}" alt="" class="inline-block w-8">
                 <p class="bg-red-100 text-red-800 inline-block px-7 py-1 rounded-2xl">${data.priority}</p>
@@ -142,7 +194,7 @@ const displayOpen = (datas) => {
             const date = new Date(data.createdAt);
             const issueDiv = document.createElement('div');
             issueDiv.innerHTML = ` 
-        <div class=" bg-white shadow-sm border-t-4 ${data.status === 'closed' ? 'border-blue-500' : 'border-red-400'} rounded-md h-full">
+        <div onclick="loadDetails(${data.id})" class=" bg-white shadow-sm border-t-4 ${data.status === 'closed' ? 'border-blue-500' : 'border-red-400'} rounded-md h-full">
             <div class="flex justify-between px-5 pt-5">
                 <img src="${data.status === 'open' ? 'assets/Open-Status.png' : 'assets/Closed- Status .png'}" alt="" class="inline-block w-8">
                 <p class="bg-red-100 text-red-800 inline-block px-7 py-1 rounded-2xl">${data.priority}</p>
@@ -175,7 +227,7 @@ const displayClose = (datas) => {
             const date = new Date(data.createdAt);
             const issueDiv = document.createElement('div');
             issueDiv.innerHTML = ` 
-        <div class=" bg-white shadow-sm border-t-4 ${data.status === 'closed' ? 'border-blue-500' : 'border-red-400'} rounded-md h-full">
+        <div onclick="loadDetails(${data.id})" class=" bg-white shadow-sm border-t-4 ${data.status === 'closed' ? 'border-blue-500' : 'border-red-400'} rounded-md h-full">
             <div class="flex justify-between px-5 pt-5">
                 <img src="${data.status === 'open' ? 'assets/Open-Status.png' : 'assets/Closed- Status .png'}" alt="" class="inline-block w-8">
                 <p class="bg-red-100 text-red-800 inline-block px-7 py-1 rounded-2xl">${data.priority}</p>
