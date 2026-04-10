@@ -85,9 +85,7 @@ But with a simpler, developer-friendly experience.
 
 ## 🖼️ Preview
 
-> 🚧 Screenshots / Demo will be added here
-
-
+<img width="1385" height="768" alt="Gemini_Generated_Image_9taqtu9taqtu9taq (1)" src="https://github.com/user-attachments/assets/8ee74c39-95d7-4e79-8d40-d9380f0fb27b" />
 
 ---
 
